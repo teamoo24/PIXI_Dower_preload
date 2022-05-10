@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
-    entry: './www/js/index.js',
+    entry: './www/src/emitted/index.js',
     output: {
         path: path.resolve(__dirname, 'www', "dist"),
     },
