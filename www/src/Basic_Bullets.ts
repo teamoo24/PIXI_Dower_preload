@@ -13,7 +13,7 @@ export class Basic_Bullets {
         //app.stage.interactive = true;
         document.getElementById("gameDiv")?.addEventListener("pointerdown", this.fireBullet);
 
-        this.player = PIXI.Sprite.from("image/player.png")
+        this.player = PIXI.Sprite.from("images/player.png")
         this.app = app;
 
         let player = this.player
@@ -34,7 +34,7 @@ export class Basic_Bullets {
     }
 
     private createBullet() {
-        let bullet = PIXI.Sprite.from("image/bullet.png")
+        let bullet = PIXI.Sprite.from("images/bullet.png")
         bullet.anchor.set(0.5);
         bullet.x = this.player.x;
         bullet.y = this.player.y;

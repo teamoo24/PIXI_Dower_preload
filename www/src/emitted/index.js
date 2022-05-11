@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const PIXI = __importStar(require("pixi.js"));
 //Basic Bulletsのモジュール
-const Basic_Bullets_js_1 = require("./Basic_Bullets.js");
+const Basic_collision_js_1 = require("./Basic_collision.js");
 window.onload = function () {
     let app = new PIXI.Application({
         width: window.innerWidth - 4,
@@ -35,5 +35,6 @@ window.onload = function () {
     // @ts-ignore
     document.querySelector("#gameDiv").appendChild(app.view);
     // let preloader_source = new preloader(app,player).preloader_source();
-    new Basic_Bullets_js_1.Basic_Bullets(app);
+    // new Basic_Bullets(app);
+    new Basic_collision_js_1.Basic_collision(app);
 };

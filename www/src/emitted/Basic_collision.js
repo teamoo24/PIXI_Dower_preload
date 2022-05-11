@@ -23,48 +23,44 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Basic_Bullets = void 0;
+exports.Basic_collision = void 0;
 const PIXI = __importStar(require("pixi.js"));
-class Basic_Bullets {
+class Basic_collision {
     constructor(app) {
-        var _a;
-        this.bullets = new Array;
-        this.bulletSpeed = 10;
-        this.fireBullet = () => {
-            console.log("FIRE!");
-            let bullet = this.createBullet();
-            this.bullets.push(bullet);
-        };
-        this.gameLoop = (delta) => {
-            this.updateBullet(delta);
-        };
-        //app.stage.interactive = true;
-        (_a = document.getElementById("gameDiv")) === null || _a === void 0 ? void 0 : _a.addEventListener("pointerdown", this.fireBullet);
         this.player = PIXI.Sprite.from("images/player.png");
-        this.app = app;
+        this.enemy = PIXI.Sprite.from("images/player.png");
+        this.speed = 4;
+        this.gameLoop = () => {
+            this.player.x += this.speed;
+            this.enemy.x -= this.speed;
+            if (this.rectsIntersect(this.player, this.enemy) || this.check_wall(this.player) || this.check_wall(this.enemy)) {
+                this.speed = -this.speed;
+            }
+        };
         let player = this.player;
+        let enemy = this.enemy;
+        this.app = app;
         player.anchor.set(0.5);
-        player.x = app.view.width / 2;
+        player.x = 16;
         player.y = app.view.height / 2;
         app.stage.addChild(player);
+        enemy.anchor.set(0.5);
+        enemy.x = app.view.width - 16;
+        enemy.y = app.view.height / 2;
+        app.stage.addChild(enemy);
         app.ticker.add(this.gameLoop);
     }
-    createBullet() {
-        let bullet = PIXI.Sprite.from("images/bullet.png");
-        bullet.anchor.set(0.5);
-        bullet.x = this.player.x;
-        bullet.y = this.player.y;
-        this.app.stage.addChild(bullet);
-        return bullet;
+    rectsIntersect(a, b) {
+        let aBox = a.getBounds();
+        let bBox = b.getBounds();
+        return aBox.x + aBox.width > bBox.x &&
+            aBox.x < bBox.x + bBox.width &&
+            aBox.y + aBox.height > bBox.y &&
+            aBox.y < bBox.y + bBox.height;
     }
-    updateBullet(delta) {
-        this.bullets.forEach((obj, index) => {
-            obj.position.y -= this.bulletSpeed;
-            if (obj.position.y < 0) {
-                this.app.stage.removeChild(this.bullets[index]);
-                this.bullets.splice(index, 1);
-            }
-        });
+    check_wall(a) {
+        let x = a.x;
+        return x < 0 || x > this.app.view.width;
     }
 }
-exports.Basic_Bullets = Basic_Bullets;
+exports.Basic_collision = Basic_collision;

@@ -30,7 +30,7 @@ class preloader {
         this.preloader_source = () => {
             // preload assets
             let app = this.app;
-            app.loader.baseUrl = "image";
+            app.loader.baseUrl = "images";
             app.loader
                 .add("sprite01", "bloat01.png")
                 .add("sprite02", "bloat02.png")

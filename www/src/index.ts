@@ -3,6 +3,8 @@ import * as PIXI from "pixi.js"
 import {preloader} from './preloader.js'
 //Basic Bulletsのモジュール
 import {Basic_Bullets} from './Basic_Bullets.js'
+//Basic Bulletsのモジュール
+import {Basic_collision} from './Basic_collision.js'
 
 window.onload = function () {
     let app:PIXI.Application = new PIXI.Application(
@@ -17,6 +19,7 @@ window.onload = function () {
     document.querySelector("#gameDiv").appendChild(app.view);
 
     // let preloader_source = new preloader(app,player).preloader_source();
-    new Basic_Bullets(app);
+    // new Basic_Bullets(app);
+    new Basic_collision(app);
 }
 
