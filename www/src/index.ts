@@ -5,6 +5,8 @@ import {preloader} from './preloader.js'
 import {Basic_Bullets} from './Basic_Bullets.js'
 //Basic Bulletsのモジュール
 import {Basic_collision} from './Basic_collision.js'
+//Basic Bulletsのモジュール
+import {using_css_font} from './using_css_font'
 
 window.onload = function () {
     let app:PIXI.Application = new PIXI.Application(
@@ -20,6 +22,7 @@ window.onload = function () {
 
     // let preloader_source = new preloader(app,player).preloader_source();
     // new Basic_Bullets(app);
-    new Basic_collision(app);
+    ///new Basic_collision(app);
+    new using_css_font(app)
 }
 

@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        @font-face {
+            font-family: 'Arcade';
+            src: url('font/ARCADECLASSIC.TTF');
+        }
+        #useFont {
+            font-family: "Arcade";
+            font-size: 10pt;
+        }
+    </style>
     <script src="dist/main.js"></script>
     <style>
-        body{
+        body{ 
             margin: 0px;
         }
 
@@ -18,5 +28,6 @@
 </head>
 <body>
     <div id="gameDiv" style="border: 2px solid red; display: flex;"></div>
+    <div id="useFont">A</div>
 </body>
 </html>
